@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ritche Gerona — Full-Stack Developer specializing in automation, AI, and open-source tooling.">
+  <title>Ritche Gerona — Full-Stack Developer</title>
+  <style>
+    :root {
+      --bg: #0b0f1a;
+      --bg-soft: #111827;
+      --card: #151d2e;
+      --border: #243049;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-2: #22d3ee;
+      --radius: 14px;
+      --maxw: 1040px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ─────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 15, 26, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+    .brand em { color: var(--accent-2); font-style: normal; }
+
+    .nav-links { display: flex; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 0.92rem; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── Hero ────────────────────────────── */
+    .hero {
+      padding: 96px 0 64px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
+    }
+
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 800; letter-spacing: -0.02em; }
+    .hero .role { color: var(--accent-2); font-weight: 600; margin-top: 6px; font-size: 1.15rem; }
+    .hero .tagline { color: var(--muted); max-width: 620px; margin: 20px auto 0; font-size: 1.02rem; }
+
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+    .badge {
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .cta { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--card);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: var(--accent); text-decoration: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #4f46e5); border-color: transparent; }
+    .btn-primary:hover { border-color: transparent; }
+
+    /* ── Sections ────────────────────────── */
+    section { padding: 56px 0; }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .grid { display: grid; gap: 18px; }
+
+    /* ── About ───────────────────────────── */
+    .about-grid { grid-template-columns: 1.4fr 1fr; }
+    .about-grid p { color: var(--muted); }
+    .about-grid p + p { margin-top: 12px; }
+
+    .expertise { display: flex; flex-direction: column; gap: 10px; }
+    .exp-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.92rem;
+    }
+    .exp-item b { display: block; font-size: 0.85rem; color: var(--accent-2); margin-bottom: 3px; }
+
+    @media (max-width: 760px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Tech stack ──────────────────────── */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .chip:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+    /* ── Projects ────────────────────────── */
+    .projects-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+    .project {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+    .project:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project h3 { font-size: 1.08rem; }
+    .project p { color: var(--muted); font-size: 0.92rem; flex: 1; }
+    .project .stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project .stack span {
+      font-size: 0.75rem;
+      color: var(--accent-2);
+      border: 1px solid var(--border);
+      padding: 2px 9px;
+      border-radius: 999px;
+    }
+    .project .links { display: flex; gap: 14px; font-size: 0.85rem; }
+
+    /* ── Stats ───────────────────────────── */
+    .stats { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+    .stats img { border: 1px solid var(--border); border-radius: var(--radius); max-width: 100%; }
+    .stats-note { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 14px; }
+    .stats-note a { color: var(--muted); text-decoration: underline; }
+
+    /* ── Connect ─────────────────────────── */
+    .connect { text-align: center; }
+    .connect p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; }
+    .connect-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    footer .heart { color: #f472b6; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a class="brand" href="#top">ritche<em>gerona</em></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#stats">Stats</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container" id="top">
+    <div class="avatar">RG</div>
+    <h1>Ritche Gerona</h1>
+    <p class="role">Full-Stack Developer · Pasig City, Philippines</p>
+    <p class="tagline">
+      I build practical software — automation tooling, secure clients, developer tools,
+      and interactive learning products. Open source, dependency-light, documented.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Python</span>
+      <span class="badge">TypeScript</span>
+      <span class="badge">React</span>
+      <span class="badge">Node.js</span>
+      <span class="badge">Linux</span>
+      <span class="badge">AI Automation</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/ritchegerona" target="_blank" rel="noopener">View GitHub</a>
+      <a class="btn" href="#projects">See Projects</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About</h2>
+      <div class="grid about-grid">
+        <div>
+          <p>
+            Documentation Team Leader and IT Specialist at Medical Staffing Resources, Inc.,
+            an international healthcare recruiter deploying Filipino healthcare workers to
+            Saudi Arabia. I lead documentation systems and IT, and I automate everything I can.
+          </p>
+          <p>
+            My core philosophy is <strong>build once, automate forever</strong> — small,
+            focused, modular systems that solve real problems and stay easy to maintain.
+            Most of my work is local-first and privacy-aware, from self-hosted AI to
+            offline-first web apps.
+          </p>
+        </div>
+        <div class="expertise">
+          <div class="exp-item"><b>Documentation &amp; Compliance</b>GCC documentation, DMW requirements, visa and deployment workflows</div>
+          <div class="exp-item"><b>IT &amp; Systems</b>Linux administration (13+ yrs), networking, office infrastructure</div>
+          <div class="exp-item"><b>AI &amp; Automation</b>Local LLMs, AI agents, RAG systems, Python and bash automation</div>
+          <div class="exp-item"><b>Development</b>Python, TypeScript, React, Node.js, Rust (learning)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="container">
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">React</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Bash</span>
+        <span class="chip">Rust</span>
+        <span class="chip">Streamlit</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Flask</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Linux</span>
+        <span class="chip">Git / GitHub</span>
+        <span class="chip">IndexedDB</span>
+        <span class="chip">Ollama</span>
+        <span class="chip">Open WebUI</span>
+        <span class="chip">LangChain</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid projects-grid">
+
+        <article class="project">
+          <h3>auto-backup-rsync</h3>
+          <p>Resumable Linux/macOS backups with hard-linked snapshots, retention policies, systemd timers, and launchd agents.</p>
+          <div class="stack"><span>Bash</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/auto-backup-rsync" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+        <article class="project">
+          <h3>LightMail</h3>
+          <p>Lightweight local email client — IMAP sync, SMTP send, and AES-256-GCM encrypted storage for privacy.</p>
+          <div class="stack"><span>Node.js</span><span>IMAP</span><span>SMTP</span><span>AES-256-GCM</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/LightMail" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+        <article class="project">
+          <h3>IronTrack — Gym Workout App</h3>
+          <p>Offline-first gym workout tracker PWA. Works without a connection, syncs when it can.</p>
+          <div class="stack"><span>React</span><span>TypeScript</span><span>IndexedDB</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/Gym-Workout-App" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+        <article class="project">
+          <h3>MetaScope</h3>
+          <p>Metadata extractor for images and videos with a web GUI — EXIF, IPTC, XMP, GPS, codecs, and five export formats.</p>
+          <div class="stack"><span>Python</span><span>Flask</span><span>ExifTool</span><span>ffprobe</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/MetaScope" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+        <article class="project">
+          <h3>AI Awareness Course</h3>
+          <p>Interactive workplace AI literacy course with exams and certificates, built to teach teams safely.</p>
+          <div class="stack"><span>JavaScript</span><span>Docker</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/ai-awareness-course" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+        <article class="project">
+          <h3>CV Automation</h3>
+          <p>Standardize candidate CVs and render them in an official GCC-compliant template automatically.</p>
+          <div class="stack"><span>Python</span><span>Streamlit</span></div>
+          <div class="links"><a href="https://github.com/ritchegerona/CV-Automation" target="_blank" rel="noopener">Repository →</a></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="stats">
+    <div class="container">
+      <h2 class="section-title">GitHub Stats</h2>
+      <div class="stats">
+        <img src="https://github-readme-stats.vercel.app/api?username=ritchegerona&show_icons=true&theme=tokyonight"
+             alt="Ritche Gerona's GitHub stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ritchegerona&layout=compact&theme=tokyonight"
+             alt="Ritche Gerona's most used languages">
+      </div>
+      <p class="stats-note">Stats via <a href="https://github.com/anuraghazra/github-readme-stats" target="_blank" rel="noopener">github-readme-stats</a></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container connect">
+      <h2 class="section-title" style="justify-content:center; gap:10px;">Let's Connect</h2>
+      <p>
+        I'm always working on automation, local AI, and developer tooling.
+        Reach out on GitHub or build with me.
+      </p>
+      <div class="connect-links">
+        <a class="btn" href="https://github.com/ritchegerona" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://ritchegerona.github.io" target="_blank" rel="noopener">This Site</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Ritche Gerona · Built with <span class="heart">♥</span> · <a href="https://github.com/ritchegerona/ritchegerona.github.io" target="_blank" rel="noopener">Source</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
